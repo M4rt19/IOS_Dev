@@ -233,6 +233,15 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPz-WH-JB0">
+                                <rect key="frame" x="0.0" y="192" width="414" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="dSj-ca-9q2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tot-ZQ-duI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -244,7 +253,10 @@
                             <constraint firstItem="0nO-bB-Rmc" firstAttribute="baseline" secondItem="RQW-od-PAv" secondAttribute="firstBaseline" id="D6V-qf-YO9"/>
                             <constraint firstItem="Tot-ZQ-duI" firstAttribute="bottom" secondItem="7kg-nq-kod" secondAttribute="bottom" constant="505" id="LNC-AU-en8"/>
                             <constraint firstItem="Tot-ZQ-duI" firstAttribute="bottom" secondItem="Rmq-T2-Xbv" secondAttribute="bottom" id="Tgd-3t-adA"/>
+                            <constraint firstItem="BPz-WH-JB0" firstAttribute="top" secondItem="TAA-jf-ZBo" secondAttribute="bottom" constant="15" id="XzE-kG-VgA"/>
+                            <constraint firstItem="Tot-ZQ-duI" firstAttribute="trailing" secondItem="BPz-WH-JB0" secondAttribute="trailing" id="h3q-Ey-wtS"/>
                             <constraint firstItem="Tot-ZQ-duI" firstAttribute="trailing" secondItem="Rmq-T2-Xbv" secondAttribute="trailing" id="huX-oZ-VBC"/>
+                            <constraint firstItem="BPz-WH-JB0" firstAttribute="leading" secondItem="Tot-ZQ-duI" secondAttribute="leading" id="iV3-qP-ZTH"/>
                             <constraint firstItem="Rmq-T2-Xbv" firstAttribute="top" secondItem="7kg-nq-kod" secondAttribute="bottom" id="joc-hq-JdF"/>
                             <constraint firstItem="7kg-nq-kod" firstAttribute="leading" secondItem="Tot-ZQ-duI" secondAttribute="leading" constant="5" id="kfr-98-m6Q"/>
                             <constraint firstItem="Tot-ZQ-duI" firstAttribute="trailing" secondItem="0nO-bB-Rmc" secondAttribute="trailing" constant="68" id="lav-6G-QLl"/>
@@ -257,6 +269,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dzh-7n-LIG"/>
                     <connections>
+                        <outlet property="date" destination="BPz-WH-JB0" id="aRW-4a-hqs"/>
                         <outlet property="displayTable" destination="Rmq-T2-Xbv" id="zqA-Sd-dFI"/>
                         <outlet property="image" destination="7kg-nq-kod" id="RKA-nW-zsh"/>
                         <outlet property="titleLabel" destination="TAA-jf-ZBo" id="Oul-03-qYL"/>
@@ -353,6 +366,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="kh5-2w-7E4"/>
                     <connections>
+                        <outlet property="absButton" destination="xNj-Q3-PNr" id="hEw-nT-OA8"/>
+                        <outlet property="backButton" destination="dwe-4m-q1x" id="Xjn-Id-oeP"/>
+                        <outlet property="chestButton" destination="ZM6-mp-raG" id="cG7-2t-AdO"/>
+                        <outlet property="handsButton" destination="rmW-yg-taT" id="Pru-cd-w7V"/>
+                        <outlet property="legsButton" destination="pQq-7k-w3a" id="0cq-Zn-A84"/>
+                        <outlet property="shouldersButton" destination="clg-6q-tFD" id="wfy-5u-dEr"/>
                         <segue destination="xDX-SQ-GoW" kind="show" identifier="list" id="wpE-24-tsH"/>
                     </connections>
                 </viewController>

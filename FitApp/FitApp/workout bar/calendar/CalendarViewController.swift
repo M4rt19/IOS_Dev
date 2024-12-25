@@ -24,7 +24,11 @@ class CalendarViewController: UIViewController {
     
     @IBOutlet weak var headLable : UILabel!
     
+    
+    
+    
     var dateString:String?
+    var ourWorkouts:[String: WorkoutExercise]?
     
     func createCalendar() {
         let calendarView = UICalendarView()
@@ -61,12 +65,15 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionSin
         formatter.dateStyle = .short
         dateString = formatter.string(from: Calendar.current.date(from: dateComponents!)!)
     
+        
         performSegue(withIdentifier: "Workout", sender: nil)
         
        
     }
     
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
+        
         return .default()
     }
 }
+

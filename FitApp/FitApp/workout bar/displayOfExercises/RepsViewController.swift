@@ -9,6 +9,7 @@ import UIKit
 
 protocol passData{
     func changeRow(reps: String, weight: String)
+    func deleteRow()
 }
 
 
@@ -42,7 +43,8 @@ class RepsViewController: UIViewController {
     }
     
     @IBAction func deleteSet(_ sender: UIButton) {
-        
+        delegate?.deleteRow()
+        navigationController?.popViewController(animated: true)
     }
 
 }

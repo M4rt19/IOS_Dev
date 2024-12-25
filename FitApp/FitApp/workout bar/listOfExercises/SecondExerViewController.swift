@@ -41,7 +41,7 @@ class SecondExerViewController: UIViewController{
         Exercise(lable: "Wrist Curls", image: .wristCurlsBarbellOrDumbbell),
         Exercise(lable: "Reverse Wrist Curls", image: .reverseWristCurls),
         Exercise(lable: "Farmer’s Walk", image: .farmerSWalkDumbbellsKettlebellsOrTrapBar),
-        Exercise(lable: "Plate Pinches", image: .manwork),
+        Exercise(lable: "Plate Pinches", image: .platePinch),
         Exercise(lable: "Dead Hangs", image: .deadHangsHangingFromAPullUpBar),
         Exercise(lable: "Reverse Barbell Curls", image: .reverseBarbellCurls),
         Exercise(lable: "Towel Pull-Ups", image: .towelPullUpsForGripStrength),
@@ -79,7 +79,7 @@ class SecondExerViewController: UIViewController{
         
     ]
     var chest: [Exercise] = [
-        Exercise(lable: "Flat Bench Press", image: .flatBenchPressBarbellOrDumbbell),
+        Exercise(lable: "Flat Bench Press", image: .flatbencPress),
         Exercise(lable: "Incline Bench Press", image: .inclineBenchPressBarbellOrDumbbell),
         Exercise(lable: "Decline Bench Press", image: .declineBenchPress),
                  Exercise(lable: "Push-Ups", image: .pushUpsRegularWideGripDiamondOrWeighted),
@@ -98,7 +98,7 @@ class SecondExerViewController: UIViewController{
                  Exercise(lable: "Seated Cable Rows", image: .seatedCableRow),
                  Exercise(lable: "Face Pulls", image: .facePullsForRearDeltsAndUpperBack),
                  Exercise(lable: "Good Mornings", image: .goodMornings),
-        Exercise(lable: "Hyperextensions", image: .manwork)
+        Exercise(lable: "Hyperextensions", image: .hyperextension)
         
     ]
     var abs: [Exercise] = [
@@ -209,6 +209,9 @@ extension SecondExerViewController: UITableViewDataSource {
     //perform actions when deselected
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         exerciseTable.cellForRow(at: indexPath)?.accessoryType = .none
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
     }
 }
 

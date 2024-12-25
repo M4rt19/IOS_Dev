@@ -15,6 +15,41 @@ class ExersiceViewController: UIViewController, passDataBack {
     var delegate: passDataBack?
     var selectedMuscle: Int? // Temporary property to hold the selected muscle index
     
+    @IBOutlet weak var handsButton: UIButton!
+    @IBOutlet weak var legsButton: UIButton!
+    @IBOutlet weak var chestButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var absButton: UIButton!
+    @IBOutlet weak var shouldersButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        handsButton.layer.cornerRadius = 12
+        legsButton.layer.cornerRadius = 12
+        chestButton.layer.cornerRadius = 12
+        backButton.layer.cornerRadius = 12
+        absButton.layer.cornerRadius = 12
+        shouldersButton.layer.cornerRadius = 12
+        
+        handsButton.layer.borderWidth = 1
+        legsButton.layer.borderWidth = 1
+        chestButton.layer.borderWidth = 1
+        backButton.layer.borderWidth = 1
+        absButton.layer.borderWidth = 1
+        shouldersButton.layer.borderWidth = 1
+        
+        handsButton.layer.borderColor = UIColor.black.cgColor
+        legsButton.layer.borderColor = UIColor.black.cgColor
+        chestButton.layer.borderColor = UIColor.black.cgColor
+        backButton.layer.borderColor = UIColor.black.cgColor
+        absButton.layer.borderColor = UIColor.black.cgColor
+        shouldersButton.layer.borderColor = UIColor.black.cgColor
+        
+        
+    }
+    
+    
     @IBAction func hands(_ sender: UIButton) {
         selectedMuscle = 0 // Hands
         performSegue(withIdentifier: "list", sender: self)

@@ -7,27 +7,28 @@
 
 import UIKit
 
-struct SetEx {
+struct SetEx: Codable {
     var reps: Int
     var weight: Double
     
 }
 
-struct ExerciseDescription {
+struct ExerciseDescription: Codable {
     var name: String
     var sets: [SetEx]
 }
 
-struct WorkoutExercise{
+struct WorkoutExercise: Codable{
     var exercises: [ExerciseDescription]
 }
+
 
 class WorkoutViewController: UIViewController, passDataBack, passData{
     
     
-    
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var date: UILabel!
     
     var Exercises: [String: [String]] = [:]
     var selectedSec: Int?
@@ -41,10 +42,16 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
     var sets: [SetEx] = []
     
     var curentDate: String?
+    
+
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        date.text = curentDate
+        
+        loadWorkouts()
         
         //settings for the picture
         image.layer.cornerRadius = 15
@@ -101,27 +108,67 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
 
         // Append a new set to the exercise
         let newSet = SetEx(reps: repsInt, weight: weightDouble)
-        workout.sets.append(newSet) // Append instead of overwriting
+        workout.sets[rowNmber]=(newSet) // Append instead of overwriting
 
         // Update the workout in `workouts`
         currentWorkouts.exercises[selectedSec] = workout
         workouts[currentDate] = currentWorkouts
 
         // Update the Exercises dictionary for display
-        let keys = Array(Exercises.keys)
-        let key = keys[selectedSec]
-        if var values = Exercises[key] {
-            values[rowNmber] = "number of reps: \(reps), and  weight: \(weight) kg"
-            Exercises[key] = values
-        }
+        
 
         // Reload the table view
         displayTable.reloadData()
+        saveWorkouts()
 
         print("Updated workouts:", workouts)
+        
     }
-
-
+    
+    
+    
+    
+    func deleteRow() {
+        guard let currentDate = curentDate,
+                  let selectedSec = selectedSec,
+                  let rowNmber = rowNmber else {
+                print("Error: Missing required parameters for deleting sets.")
+                return
+            }
+            
+            // Ensure the workouts dictionary contains the current date
+            guard var currentWorkouts = workouts[currentDate] else {
+                print("Error: No workouts found for the current date.")
+                return
+            }
+            
+            // Get the selected workout exercise
+            var workoutExercise = currentWorkouts.exercises[selectedSec]
+            
+            // Check if the row number is valid
+            if rowNmber < workoutExercise.sets.count {
+                // Remove the set from the sets array
+                workoutExercise.sets.remove(at: rowNmber)
+                
+                // Update the exercise with the modified sets array
+                currentWorkouts.exercises[selectedSec] = workoutExercise
+                
+                // Update the workouts dictionary
+                workouts[currentDate] = currentWorkouts
+                
+                // Reload the table view to reflect the removed set
+                displayTable.reloadData()
+                
+                // Save the updated workouts to UserDefaults
+                saveWorkouts()
+                
+                print("Set removed successfully!")
+            } else {
+                print("Error: Invalid row number.")
+            }
+    }
+    
+    
     
 
 
@@ -140,9 +187,9 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
         for (key, value) in exercises {
             if Exercises[key] == nil {
                 Exercises[key] = [] // Initialize the Exercises array if needed
-                
+                let inter:[SetEx] = [SetEx(reps: 0, weight: 0), SetEx(reps: 0, weight: 0),SetEx(reps: 0, weight: 0)]
                 // Create a new ExerciseDescription and WorkoutExercise
-                let newExercise = ExerciseDescription(name: key, sets: sets)
+                let newExercise = ExerciseDescription(name: key, sets: inter)
                 arrayOfExercises.append(newExercise)
                 rememberWorkout = WorkoutExercise(exercises: arrayOfExercises)
                 
@@ -156,6 +203,7 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
         
         displayTable.reloadData()
         print("Workouts updated:", workouts)
+        saveWorkouts()
     }
 
 
@@ -170,6 +218,43 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
 
     var reps: String!
     var weight: String!
+    
+    @objc func buttonTapped(sender: UIButton){
+        // Ensure we have valid current date, selected section, and row number
+            guard
+                  let currentDate = curentDate else {
+                print("Error: Missing selected section or current date.")
+                return
+            }
+        
+            selectedSec = sender.tag
+
+            // Ensure the workouts dictionary contains the current date
+            guard var currentWorkouts = workouts[currentDate] else {
+                print("Error: No workouts found for the current date.")
+                return
+            }
+        
+        // Get the selected workout exercise
+        var workoutExercise = currentWorkouts.exercises[selectedSec!]
+
+            // Create a new SetEx (initializing with default values for reps and weight)
+            let newSet = SetEx(reps: 0, weight: 0.0)
+
+            // Append the new set to the exercise's sets array
+            workoutExercise.sets.append(newSet)
+
+            // Update the workout in the workouts dictionary
+        currentWorkouts.exercises[selectedSec!] = workoutExercise
+            workouts[currentDate] = currentWorkouts
+
+            // Reload the table view to reflect the added set
+            displayTable.reloadData()
+
+            // Save the updated workouts to UserDefaults
+            saveWorkouts()
+
+    }
     	
 
 }
@@ -188,28 +273,104 @@ extension WorkoutViewController: UITableViewDelegate {
 
 
 extension WorkoutViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let keys = Array(Exercises.keys)
-        return Exercises[keys[section]]?.count ?? 0
-    }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let keys = Array(Exercises.keys)
-        return keys[section]
-    }
-    
+    // Number of sections corresponds to the number of exercises in the current workout
     func numberOfSections(in tableView: UITableView) -> Int {
-        return Exercises.count
+        guard let currentDate = curentDate, let currentWorkout = workouts[currentDate] else {
+            return 0 // No workouts for the selected date
+        }
+        return currentWorkout.exercises.count
     }
     
+    // Number of rows in each section corresponds to the number of sets for a given exercise
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let currentDate = curentDate, let currentWorkout = workouts[currentDate] else {
+            return 0
+        }
+        return currentWorkout.exercises[section].sets.count
+    }
+    
+    // Title for each section is the name of the exercise
+   
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let currentDate = curentDate, let currentWorkout = workouts[currentDate] else {
+            return nil
+        }
+        
+        let view = UIView()
+        
+        let label = UILabel()
+        label.text = currentWorkout.exercises[section].name
+        label.frame = CGRect(x: 5, y: 5, width: 270, height: 35)
+        view.addSubview(label)
+        
+        let button = UIButton()
+        button.setTitle("+", for: .normal) // Set the title for the button
+        button.frame = CGRect(x: 330, y: 12, width: 30, height: 20)// Set the button's position and size
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .blue // Set the background color
+        button.setTitleColor(.white, for: .normal) // Set the title color
+        button.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
+        view.addSubview(button)
+        button.tag = section
+        
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    // Configure each cell to display set details (e.g., reps and weight)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let keys = Array(Exercises.keys)
-        let currentKey = keys[indexPath.section]
-        let exerciseData = Exercises[currentKey] ?? []
-        cell.textLabel?.text = exerciseData[indexPath.row]
+        
+        guard let currentDate = curentDate, let currentWorkout = workouts[currentDate] else {
+            cell.textLabel?.text = "No data"
+            return cell
+        }
+        
+        let exercise = currentWorkout.exercises[indexPath.section]
+        let set = exercise.sets[indexPath.row]
+        cell.textLabel?.text = "Reps: \(set.reps), Weight: \(set.weight) kg"
         cell.textLabel?.textColor = .lightGray
+        
         return cell
     }
 }
+
+
+extension WorkoutViewController {
+    func saveWorkouts() {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(workouts)
+            UserDefaults.standard.set(data, forKey: curentDate!)
+            print("Workouts saved successfully!")
+        } catch {
+            print("Error saving workouts: \(error.localizedDescription)")
+        }
+    }
+}
+
+extension WorkoutViewController {
+    func loadWorkouts() {
+        guard let data = UserDefaults.standard.data(forKey: curentDate!) else {
+            print("No saved workouts found")
+            return
+        }
+
+        do {
+            let decoder = JSONDecoder()
+            workouts = try decoder.decode([String: WorkoutExercise].self, from: data)
+            
+            print("Workouts loaded successfully!")
+        } catch {
+            print("Error loading workouts: \(error.localizedDescription)")
+        }
+    }
+}
+
+
 
