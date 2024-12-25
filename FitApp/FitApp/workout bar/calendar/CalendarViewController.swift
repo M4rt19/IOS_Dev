@@ -9,6 +9,19 @@ class CalendarViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Workout", let destinationVC = segue.destination as? WorkoutViewController {
+            if let dateString = self.dateString {
+                destinationVC.curentDate = dateString
+                print("Passing date to WorkoutViewController: \(dateString)") // Debugging log
+            } else {
+                print("Date string is nil in prepare(for:sender:).")
+            }
+        }
+    }
+
+    
+    
     @IBOutlet weak var headLable : UILabel!
     
     var dateString:String?
@@ -42,13 +55,15 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-        performSegue(withIdentifier: "Workout", sender: nil)
+        
         
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         dateString = formatter.string(from: Calendar.current.date(from: dateComponents!)!)
     
+        performSegue(withIdentifier: "Workout", sender: nil)
         
+       
     }
     
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {

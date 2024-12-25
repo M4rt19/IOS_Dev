@@ -21,11 +21,11 @@ class RepsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textRep.text = dataPass
+        
         // Do any additional setup after loading the view.
     }
     
-    var dataPass:String?
+    
     
     
     @IBAction func saveButton(_ sender: UIButton) {

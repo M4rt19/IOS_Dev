@@ -282,7 +282,9 @@
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmW-yg-taT">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="57.5"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Hands"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Hands">
+                                            <backgroundConfiguration key="background" image="hands"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="hands:" destination="PCZ-N5-Gr0" eventType="touchUpInside" id="0o7-TD-yxe"/>
                                         </connections>
@@ -290,7 +292,9 @@
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQq-7k-w3a">
                                         <rect key="frame" x="0.0" y="82.5" width="414" height="58"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Legs"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Legs">
+                                            <backgroundConfiguration key="background" image="legs"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="legs:" destination="PCZ-N5-Gr0" eventType="touchUpInside" id="Sss-XB-Ulh"/>
                                         </connections>
@@ -298,7 +302,9 @@
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZM6-mp-raG">
                                         <rect key="frame" x="0.0" y="165.5" width="414" height="57.5"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Chest"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Chest">
+                                            <backgroundConfiguration key="background" image="chest"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="chest:" destination="PCZ-N5-Gr0" eventType="touchUpInside" id="UYk-6c-ebK"/>
                                         </connections>
@@ -306,7 +312,9 @@
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwe-4m-q1x">
                                         <rect key="frame" x="0.0" y="248" width="414" height="57.5"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Back">
+                                            <backgroundConfiguration key="background" image="back"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="back:" destination="PCZ-N5-Gr0" eventType="touchUpInside" id="e06-kO-VJ5"/>
                                         </connections>
@@ -314,7 +322,9 @@
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNj-Q3-PNr">
                                         <rect key="frame" x="0.0" y="330.5" width="414" height="58"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Abs"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Abs">
+                                            <backgroundConfiguration key="background" image="abs"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="abs:" destination="PCZ-N5-Gr0" eventType="touchUpInside" id="Bvx-dB-btG"/>
                                         </connections>
@@ -322,7 +332,9 @@
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clg-6q-tFD">
                                         <rect key="frame" x="0.0" y="413.5" width="414" height="57.5"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Shoulders"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Shoulders">
+                                            <backgroundConfiguration key="background" image="shoulders"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="shoulders:" destination="PCZ-N5-Gr0" eventType="touchUpInside" id="faK-V9-bCW"/>
                                         </connections>
@@ -510,11 +522,17 @@
         </scene>
     </scenes>
     <resources>
+        <image name="abs" width="355.5" height="46"/>
+        <image name="back" width="390.5" height="51.5"/>
         <image name="bx-book-reader" width="24" height="24"/>
         <image name="bx-bulb" width="24" height="24"/>
         <image name="bx-dumbbell" width="24" height="24"/>
         <image name="bx-line-chart" width="24" height="24"/>
+        <image name="chest" width="389.5" height="51"/>
+        <image name="hands" width="389.5" height="50"/>
+        <image name="legs" width="389.5" height="50.5"/>
         <image name="manwork" width="800" height="500"/>
+        <image name="shoulders" width="355" height="46.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

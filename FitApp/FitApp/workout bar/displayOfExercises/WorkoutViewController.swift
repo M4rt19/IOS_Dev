@@ -34,7 +34,7 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
     var rowNmber: Int?
     var sectionNum: Int?
     
-    var workouts: [String: [WorkoutExercise]] = [:] // Dictionary to store workouts by date
+    var workouts: [String: WorkoutExercise] = [:] // Dictionary to store workouts by date
     var rememberWorkout: WorkoutExercise?
     var arrayOfExercises: [ExerciseDescription] = []
     var rememberExercise: ExerciseDescription?
@@ -55,8 +55,12 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
         displayTable.delegate = self
         displayTable.dataSource = self
         
-        let destVC = storyboard?.instantiateViewController(withIdentifier: "calendar") as! CalendarViewController
-        curentDate = destVC.dateString!
+        if let date = curentDate {
+                print("Current date received: \(date)")
+            } else {
+                print("No date received.")
+            }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,34 +76,88 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
     
     // protocol for adding reps and weight to row
     func changeRow(reps: String, weight: String) {
+        // Ensure `selectedSec`, `rowNmber`, and `curentDate` are valid
+        guard let selectedSec = selectedSec,
+              let rowNmber = rowNmber,
+              let currentDate = curentDate else {
+            print("Error: Missing required parameters for updating sets.")
+            return
+        }
+
+        // Ensure the date exists in `workouts`
+        guard var currentWorkouts = workouts[currentDate] else {
+            print("Error: No workouts found for the current date.")
+            return
+        }
+
+        // Get the workout for the selected section
+        var workout = currentWorkouts.exercises[selectedSec]
+
+        // Parse reps and weight into appropriate types
+        guard let repsInt = Int(reps), let weightDouble = Double(weight) else {
+            print("Error: Invalid input for reps or weight.")
+            return
+        }
+
+        // Append a new set to the exercise
+        let newSet = SetEx(reps: repsInt, weight: weightDouble)
+        workout.sets.append(newSet) // Append instead of overwriting
+
+        // Update the workout in `workouts`
+        currentWorkouts.exercises[selectedSec] = workout
+        workouts[currentDate] = currentWorkouts
+
+        // Update the Exercises dictionary for display
         let keys = Array(Exercises.keys)
-        let key = keys[selectedSec!]
-        var values = Exercises[key]!
-        values[rowNmber!] = "number of reps: \(reps), and  weight: \(weight) kg"
-        Exercises[key] = values
+        let key = keys[selectedSec]
+        if var values = Exercises[key] {
+            values[rowNmber] = "number of reps: \(reps), and  weight: \(weight) kg"
+            Exercises[key] = values
+        }
+
+        // Reload the table view
         displayTable.reloadData()
+
+        print("Updated workouts:", workouts)
     }
+
+
     
 
 
     
     // Protocol method to update the exercises
     func updateRow(exercises: [String: [String]]) {
-        // Update the existing exercises, appending new data
+        // Ensure curentDate is not nil
+        guard let currentDate = curentDate else {
+            print("Error: curentDate is nil.")
+            return
+        }
+
+    
+
+        // Loop through exercises to update the data
         for (key, value) in exercises {
             if Exercises[key] == nil {
-                Exercises[key] = []  // Create an empty array if the key doesn't exist
-                rememberExercise = ExerciseDescription(name: key, sets: sets)
-                arrayOfExercises.append(rememberExercise!)
+                Exercises[key] = [] // Initialize the Exercises array if needed
+                
+                // Create a new ExerciseDescription and WorkoutExercise
+                let newExercise = ExerciseDescription(name: key, sets: sets)
+                arrayOfExercises.append(newExercise)
                 rememberWorkout = WorkoutExercise(exercises: arrayOfExercises)
-                workouts[curentDate!]!.append(rememberWorkout!)
+                
+                // Add the workout to the current date
+                workouts[currentDate] = rememberWorkout
             }
-            Exercises[key]?.append(contentsOf: value)  // Append the new exercises
+            
+            // Append new exercise details
+            Exercises[key]?.append(contentsOf: value)
         }
-        displayTable.reloadData()
         
-        print(workouts)
+        displayTable.reloadData()
+        print("Workouts updated:", workouts)
     }
+
 
     
     //add button
@@ -119,6 +177,7 @@ extension WorkoutViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSec = indexPath.section
         rowNmber = indexPath.row
+        print(selectedSec as Any, rowNmber as Any)
         performSegue(withIdentifier: "stat", sender: nil)
         
     }
