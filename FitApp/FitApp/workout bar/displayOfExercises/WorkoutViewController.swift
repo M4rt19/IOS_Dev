@@ -51,7 +51,10 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
         
         date.text = curentDate
         
+        print(workouts)
+        
         loadWorkouts()
+        print(workouts)
         
         //settings for the picture
         image.layer.cornerRadius = 15
@@ -266,6 +269,61 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
             saveWorkouts()
 
     }
+    
+    @objc func deleteButton(sender: UIButton) {
+        guard let currentDate = curentDate else {
+            print("Error: Current date is nil.")
+            return
+        }
+        
+        let section = sender.tag // Identify the section of the exercise
+        
+        // Ensure the workouts dictionary contains the current date
+        guard let currentWorkouts = workouts[currentDate] else {
+            print("Error: No workouts found for the current date.")
+            return
+        }
+        
+        // Get the selected exercise
+        let exerciseToDelete = currentWorkouts.exercises[section]
+        
+        // Show confirmation alert
+        let alertController = UIAlertController(
+            title: "Delete Exercise",
+            message: "Are you sure you want to delete the exercise \"\(exerciseToDelete.name)\"?",
+            preferredStyle: .alert
+        )
+        
+        // Confirm action
+        let confirmAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            // Perform deletion
+            var updatedWorkouts = currentWorkouts
+            updatedWorkouts.exercises.remove(at: section)
+            self.workouts[currentDate] = updatedWorkouts
+            
+            // Reload the table view and save the updated workouts
+            self.displayTable.reloadData()
+            self.saveWorkouts()
+            
+            // Call updateWorkoutDates function in CalendarViewController
+            if let calendarVC = self.navigationController?.viewControllers.first(where: { $0 is CalendarViewController }) as? CalendarViewController {
+                calendarVC.updateWorkoutDates(for: currentDate)
+            }
+            
+            print("Exercise \"\(exerciseToDelete.name)\" deleted successfully.")
+        }
+        
+        // Cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        // Add actions to the alert controller
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the alert
+        present(alertController, animated: true, completion: nil)
+    }
+
     	
 
 }
@@ -314,18 +372,44 @@ extension WorkoutViewController: UITableViewDataSource {
         
         let label = UILabel()
         label.text = currentWorkout.exercises[section].name
-        label.frame = CGRect(x: 5, y: 5, width: 270, height: 35)
+        label.frame = CGRect(x: 5, y: 5, width: 280, height: 35)
         view.addSubview(label)
         
         let button = UIButton()
         button.setTitle("+", for: .normal) // Set the title for the button
-        button.frame = CGRect(x: 330, y: 12, width: 30, height: 20)// Set the button's position and size
+        button.frame = CGRect(x: 280, y: 12, width: 30, height: 20)// Set the button's position and size
         button.layer.cornerRadius = 10
         button.backgroundColor = .blue // Set the background color
         button.setTitleColor(.white, for: .normal) // Set the title color
         button.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
         view.addSubview(button)
         button.tag = section
+        
+        let deleteButton = UIButton(type: .system) // Use .system to properly render the image and text
+        deleteButton.frame = CGRect(x: 330, y: 12, width: 30, height: 20)
+        deleteButton.layer.cornerRadius = 10
+        deleteButton.backgroundColor = .red
+        deleteButton.tintColor = .white // Tint color affects the image color if it's a template image
+
+        // Set the image (ensure you have an image named "trash" in your assets folder)
+        let trashImage = UIImage(systemName: "trash") // Use SF Symbols or your custom image
+        deleteButton.setImage(trashImage, for: .normal)
+
+        
+
+        // Set title for the button (optional)
+    
+
+        // Align image and title
+        deleteButton.contentHorizontalAlignment = .center
+        deleteButton.contentVerticalAlignment = .center
+        
+
+        // Add the target
+        deleteButton.addTarget(self, action: #selector(deleteButton(sender:)), for: .touchUpInside)
+        view.addSubview(deleteButton)
+        deleteButton.tag = section
+
         
         return view
     }

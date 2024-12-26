@@ -3,13 +3,14 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     
-    var ourWorkouts: [String: WorkoutExercise] = [:]
+    
     var workoutDates: Set<String> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         workoutDates = getWorkoutDates()
         createCalendar()
+    
         
         // Do any additional setup after loading the view.
     }
@@ -19,12 +20,20 @@ class CalendarViewController: UIViewController {
             if let dateString = self.dateString {
                 destinationVC.curentDate = dateString
                 
+                
                 print("Passing date to WorkoutViewController: \(dateString)") // Debugging log
             } else {
                 print("Date string is nil in prepare(for:sender:).")
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        workoutDates = getWorkoutDates()
+        refreshCalendar()
+    }
+
 
     
     
@@ -72,6 +81,51 @@ class CalendarViewController: UIViewController {
         }
         return workoutDates
     }
+    
+    func refreshCalendar() {
+        // Remove the existing calendar view
+        for subview in view.subviews where subview is UICalendarView {
+            subview.removeFromSuperview()
+        }
+        
+        // Recreate the calendar
+        createCalendar()
+    }
+
+    
+    
+    func updateWorkoutDates(for dateString: String) {
+        // Attempt to fetch data for the given date
+        if let data = UserDefaults.standard.data(forKey: dateString) {
+            do {
+                let decoder = JSONDecoder()
+                let workout = try decoder.decode([String: WorkoutExercise].self, from: data)
+                
+                if workout[dateString]!.exercises.isEmpty {
+                    // No exercises: remove date from workoutDates and UserDefaults
+                    workoutDates.remove(dateString)
+                    UserDefaults.standard.removeObject(forKey: dateString)
+                } else {
+                    // Ensure the date is in the set if there are exercises
+                    workoutDates.insert(dateString)
+                }
+            } catch {
+                // If decoding fails, remove the invalid data
+                print("Error decoding workout data: \(error.localizedDescription)")
+                UserDefaults.standard.removeObject(forKey: dateString)
+            }
+        } else {
+            // If no data exists, remove the date
+            workoutDates.remove(dateString)
+            UserDefaults.standard.removeObject(forKey: dateString)
+        }
+        
+        // Refresh the calendar to reflect the changes
+        refreshCalendar()
+    }
+
+
+
 
     
     
@@ -85,10 +139,9 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionSin
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         dateString = formatter.string(from: Calendar.current.date(from: dateComponents!)!)
-    
-        print(ourWorkouts)
         
         selection.selectedDate = nil
+        
         performSegue(withIdentifier: "Workout", sender: nil)
         
     }
@@ -96,18 +149,16 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionSin
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         
         guard let date = Calendar.current.date(from: dateComponents) else { return nil }
-                let formatter = DateFormatter()
-                formatter.dateStyle = .short
-                let dateString = formatter.string(from: date)
-
-                // Check if the date exists in UserDefaults
-                if let _ = UserDefaults.standard.data(forKey: dateString) {
-                    // If workouts exist for this date, return a custom decoration
-                    return .image(UIImage(systemName: "checkmark.circle.fill"), color: .systemGreen, size: .large)
-                }
-
-                // Default decoration
-        return nil
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            let dateString = formatter.string(from: date)
+            
+            // Check if the date exists in workoutDates
+            if workoutDates.contains(dateString) {
+                return .image(UIImage(systemName: "checkmark.circle.fill"), color: .systemGreen, size: .large)
+            }
+            
+            return nil
         
     }
 }
