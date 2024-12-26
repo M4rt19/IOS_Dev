@@ -175,32 +175,43 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
     
     // Protocol method to update the exercises
     func updateRow(exercises: [String: [String]]) {
-        // Ensure curentDate is not nil
+        // Ensure `curentDate` is not nil
         guard let currentDate = curentDate else {
             print("Error: curentDate is nil.")
             return
         }
-
-    
-
-        // Loop through exercises to update the data
-        for (key, value) in exercises {
-            if Exercises[key] == nil {
-                Exercises[key] = [] // Initialize the Exercises array if needed
-                let inter:[SetEx] = [SetEx(reps: 0, weight: 0), SetEx(reps: 0, weight: 0),SetEx(reps: 0, weight: 0)]
-                // Create a new ExerciseDescription and WorkoutExercise
-                let newExercise = ExerciseDescription(name: key, sets: inter)
-                arrayOfExercises.append(newExercise)
-                rememberWorkout = WorkoutExercise(exercises: arrayOfExercises)
-                
-                // Add the workout to the current date
-                workouts[currentDate] = rememberWorkout
-            }
-            
-            // Append new exercise details
-            Exercises[key]?.append(contentsOf: value)
+        
+        // Ensure the workouts dictionary has an entry for the current date
+        if workouts[currentDate] == nil {
+            workouts[currentDate] = WorkoutExercise(exercises: [])
         }
         
+        // Retrieve the current workout for the date
+        guard var currentWorkout = workouts[currentDate] else {
+            print("Error: No workout found for the current date.")
+            return
+        }
+
+        for (exerciseName, _) in exercises {
+            // Check if the exercise already exists in the current workout
+            if !currentWorkout.exercises.contains(where: { $0.name == exerciseName }) {
+                // If not, create a new ExerciseDescription with default sets
+                let defaultSets: [SetEx] = [
+                    SetEx(reps: 0, weight: 0),
+                    SetEx(reps: 0, weight: 0),
+                    SetEx(reps: 0, weight: 0)
+                ]
+                let newExercise = ExerciseDescription(name: exerciseName, sets: defaultSets)
+                
+                // Add the new exercise to the workout
+                currentWorkout.exercises.append(newExercise)
+            }
+    }
+        
+        // Update the workouts dictionary with the modified workout
+        workouts[currentDate] = currentWorkout
+        
+        // Reload the table view to reflect changes
         displayTable.reloadData()
         print("Workouts updated:", workouts)
         saveWorkouts()
@@ -299,6 +310,7 @@ extension WorkoutViewController: UITableViewDataSource {
         }
         
         let view = UIView()
+    
         
         let label = UILabel()
         label.text = currentWorkout.exercises[section].name

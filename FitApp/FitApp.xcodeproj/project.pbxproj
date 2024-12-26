@@ -29,6 +29,11 @@
 			path = FitApp;
 			sourceTree = "<group>";
 		};
+		A885A3812D1D570600B25243 /* Graph bar */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Graph bar";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			children = (
 				A884F8B82D0C437C00D34CC9 /* FitApp */,
 				A884F8B72D0C437C00D34CC9 /* Products */,
+				A885A3812D1D570600B25243 /* Graph bar */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +81,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A884F8B82D0C437C00D34CC9 /* FitApp */,
+				A885A3812D1D570600B25243 /* Graph bar */,
 			);
 			name = FitApp;
 			packageProductDependencies = (
