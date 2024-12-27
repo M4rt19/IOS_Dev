@@ -468,7 +468,7 @@
                         <segue destination="G0c-6R-K5c" kind="relationship" relationship="viewControllers" id="cxO-mQ-TmB"/>
                         <segue destination="7ff-WM-tVI" kind="relationship" relationship="viewControllers" id="vi9-Cb-SCC"/>
                         <segue destination="lgH-cj-3uJ" kind="relationship" relationship="viewControllers" id="PoD-pW-aYa"/>
-                        <segue destination="3fz-Cw-q7E" kind="relationship" relationship="viewControllers" id="g38-SF-vch"/>
+                        <segue destination="HcY-1x-1yn" kind="relationship" relationship="viewControllers" id="g38-SF-vch"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGO-lM-J9G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -534,21 +534,66 @@
             </objects>
             <point key="canvasLocation" x="1744.9275362318842" y="353.57142857142856"/>
         </scene>
-        <!--Improve-->
+        <!--View Controller-->
         <scene sceneID="CgU-5p-cfe">
             <objects>
                 <viewController id="3fz-Cw-q7E" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x7P-Qp-yy8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4nl-97-fwo">
+                                <rect key="frame" x="5" y="97" width="404" height="711"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <mutableString key="text">Motivational Text for Gym Workouts:
+The gym isn’t just a place with equipment; it’s your personal temple of strength and willpower. Every time you step through its doors, you embark on a journey of self-improvement. Here, not only your body is forged, but also your character. The clanging of weights, heavy breathing, and drops of sweat are not signs of weakness but proof of your struggle, your drive to become better than you were yesterday.
+
+Don’t fear fatigue. True strength is born from overcoming challenges. Remember, every repetition, every set brings you closer to your goal. Don’t compare yourself to others—compete only with yourself. Your greatest competitor is the version of you from yesterday.
+
+Don’t look for easy ways out. True results require effort and discipline. Don’t skip workouts, stick to your plan, and give it your all. You’ll see how your body transforms and how your self-confidence grows. The gym is a place where you become stronger, not just physically but also mentally. Here, you learn to overcome yourself, achieve your goals, and never give up.
+
+Nutrition Tips (Diet Is a Key Foundation for Training):
+Nutrition plays a crucial role in achieving results in the gym. Training alone isn’t enough—you need to eat right. Here are some general recommendations:
+
+Macronutrient Balance: Ensure your diet contains enough protein (to build muscle), carbohydrates (for energy), and fats (for hormonal balance and overall health).
+Protein: Consume enough protein (1.6–2.2 grams per kilogram of body weight). Sources: chicken, fish, eggs, cottage cheese, legumes, protein shakes.
+Carbohydrates: Opt for complex carbohydrates that provide sustained energy: oatmeal, buckwheat, brown rice, whole-grain bread.
+Fats: Prioritize healthy fats: avocado, nuts, seeds, olive oil, fatty fish.
+Meal Timing: Aim to eat regularly in small portions, 5–6 times a day.
+Water: Drink enough water throughout the day.
+Limit: Avoid or minimize the consumption of simple carbohydrates (sweets, pastries), processed foods, fast food, and sugary sodas.
+Important: Before making significant changes to your diet, it’s recommended to consult a doctor or nutritionist. They can help create a personalized nutrition plan tailored to your needs and goals.
+
+Inspirational Examples (Channels of People Achieving Their Goals):
+Unfortunately, I cannot provide specific links to channels, as these depend on your personal preferences and goals. However, I recommend searching on YouTube and other platforms with the following queries:
+
+"Fitness transformation"
+"Gym motivation"
+"Bodybuilding motivation"
+"Natural bodybuilding"
+"Women’s fitness"
+When searching, pay attention to channels where people share their personal experiences, talk about their workouts, diet, and provide useful advice. It’s important to choose channels that promote a healthy lifestyle and achieving results without the use of banned substances.
+
+Remember, every person is unique, and what works for one may not work for another. It’s important to find your own path and follow it with persistence and determination. Good luck with your workouts!</mutableString>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Vu8-oK-me2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4nl-97-fwo" firstAttribute="leading" secondItem="Vu8-oK-me2" secondAttribute="leading" constant="5" id="UZ6-VS-0K6"/>
+                            <constraint firstItem="Vu8-oK-me2" firstAttribute="bottom" secondItem="4nl-97-fwo" secondAttribute="bottom" constant="5" id="Wdc-M2-X0p"/>
+                            <constraint firstItem="4nl-97-fwo" firstAttribute="top" secondItem="Vu8-oK-me2" secondAttribute="top" constant="5" id="e0x-tc-oin"/>
+                            <constraint firstItem="Vu8-oK-me2" firstAttribute="trailing" secondItem="4nl-97-fwo" secondAttribute="trailing" constant="5" id="sOM-7I-JBm"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Improve" image="bx-bulb" id="wfC-Pw-GZP"/>
+                    <navigationItem key="navigationItem" id="fhy-4W-UId"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fS3-z1-F9p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="1070"/>
+            <point key="canvasLocation" x="1710.144927536232" y="1069.4196428571429"/>
         </scene>
         <!--Results-->
         <scene sceneID="Yqj-jd-hzp">
@@ -842,7 +887,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Hands">
-                                            <backgroundConfiguration key="background" image="hands"/>
+                                            <backgroundConfiguration key="background" image="photo_2024-12-27 18.05.55"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="hands:" destination="A72-Pa-uIC" eventType="touchUpInside" id="DYY-Ir-okQ"/>
@@ -852,7 +897,7 @@
                                         <rect key="frame" x="0.0" y="68.5" width="414" height="43"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Legs">
-                                            <backgroundConfiguration key="background" image="legs"/>
+                                            <backgroundConfiguration key="background" image="photo_2024-12-27 18.05.52"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="legs:" destination="A72-Pa-uIC" eventType="touchUpInside" id="grv-fE-i3M"/>
@@ -862,7 +907,7 @@
                                         <rect key="frame" x="0.0" y="136.5" width="414" height="43.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Chest">
-                                            <backgroundConfiguration key="background" image="chest"/>
+                                            <backgroundConfiguration key="background" image="photo_2024-12-27 18.05.54"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="chest:" destination="A72-Pa-uIC" eventType="touchUpInside" id="lxW-H9-ei9"/>
@@ -872,7 +917,7 @@
                                         <rect key="frame" x="0.0" y="205" width="414" height="43"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Back">
-                                            <backgroundConfiguration key="background" image="back"/>
+                                            <backgroundConfiguration key="background" image="photo_2024-12-27 18.05.55 (1)"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="back:" destination="A72-Pa-uIC" eventType="touchUpInside" id="FgN-T8-XSC"/>
@@ -882,7 +927,7 @@
                                         <rect key="frame" x="0.0" y="273" width="414" height="43.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Abs">
-                                            <backgroundConfiguration key="background" image="abs"/>
+                                            <backgroundConfiguration key="background" image="photo_2024-12-27 18.05.53"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="abs:" destination="A72-Pa-uIC" eventType="touchUpInside" id="6Mc-2e-9Sq"/>
@@ -892,7 +937,7 @@
                                         <rect key="frame" x="0.0" y="341.5" width="414" height="43"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Shoulders">
-                                            <backgroundConfiguration key="background" image="shoulders"/>
+                                            <backgroundConfiguration key="background" image="photo_2024-12-27 18.05.51 (1)"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="shoulders:" destination="A72-Pa-uIC" eventType="touchUpInside" id="taK-Pr-fSy"/>
@@ -901,7 +946,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTa-dJ-UDZ">
                                         <rect key="frame" x="0.0" y="409.5" width="414" height="43.5"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                                            <backgroundConfiguration key="background" image="photo_2024-12-27 18.05.51"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="flexTrain:" destination="A72-Pa-uIC" eventType="touchUpInside" id="WN2-o4-Ldf"/>
                                         </connections>
@@ -909,7 +956,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJt-cB-emo">
                                         <rect key="frame" x="0.0" y="478" width="414" height="43"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                                            <backgroundConfiguration key="background" image="photo_2024-12-27 18.05.49"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="highInt:" destination="A72-Pa-uIC" eventType="touchUpInside" id="hdj-l0-P6W"/>
                                         </connections>
@@ -941,7 +990,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKn-5e-Qm2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2706" y="1158"/>
+            <point key="canvasLocation" x="3615.9420289855075" y="1157.8125"/>
         </scene>
         <!--Table Programs View Controller-->
         <scene sceneID="z57-WF-QfD">
@@ -1012,7 +1061,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ghg-Z1-4ST" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3879.7101449275365" y="1157.8125"/>
+            <point key="canvasLocation" x="4789.8550724637689" y="1157.8125"/>
+        </scene>
+        <!--Improve-->
+        <scene sceneID="4f0-rO-VYn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HcY-1x-1yn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Improve" image="bx-bulb" id="wfC-Pw-GZP"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="krk-zq-RtD">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3fz-Cw-q7E" kind="relationship" relationship="rootViewController" id="4Gs-q1-ydU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QUJ-UL-962" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800.00000000000011" y="1069.4196428571429"/>
         </scene>
     </scenes>
     <resources>
@@ -1029,9 +1097,20 @@
         <image name="hands" width="389.5" height="50"/>
         <image name="legs" width="389.5" height="50.5"/>
         <image name="manwork" width="800" height="500"/>
+        <image name="photo_2024-12-27 18.05.49" width="353.5" height="46"/>
+        <image name="photo_2024-12-27 18.05.51" width="355.5" height="46"/>
+        <image name="photo_2024-12-27 18.05.51 (1)" width="355.5" height="47"/>
+        <image name="photo_2024-12-27 18.05.52" width="355" height="46"/>
+        <image name="photo_2024-12-27 18.05.53" width="355.5" height="46"/>
+        <image name="photo_2024-12-27 18.05.54" width="352.5" height="44.5"/>
+        <image name="photo_2024-12-27 18.05.55" width="354.5" height="46.5"/>
+        <image name="photo_2024-12-27 18.05.55 (1)" width="355" height="45"/>
         <image name="shoulders" width="355" height="46.5"/>
         <image name="square.and.arrow.down.on.square" catalog="system" width="116" height="128"/>
         <image name="trash" catalog="system" width="117" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
