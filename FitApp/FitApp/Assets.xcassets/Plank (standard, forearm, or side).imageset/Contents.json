@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Plank (standard, forearm, or side).jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

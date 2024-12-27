@@ -102,26 +102,26 @@ class SecondExerViewController: UIViewController{
         
     ]
     var abs: [Exercise] = [
-        Exercise(lable: "Plank (standard, forearm, or side)", image: .manwork),
-        Exercise(lable: "Dead Bug", image: .manwork),
-        Exercise(lable: "Ab Wheel Rollouts", image: .manwork),
-        Exercise(lable: "V-Ups", image: .bxBulb),
-        Exercise(lable: "Dragon Flag", image: .bxBulb),
-        Exercise(lable: "L-Sit (using parallel bars or ground)", image: .bxBulb)
+        Exercise(lable: "Plank (standard, forearm, or side)", image: .plankStandardForearmOrSide),
+        Exercise(lable: "Dead Bug", image: .deadBug),
+        Exercise(lable: "Ab Wheel Rollouts", image: .abWheelRollOuts),
+        Exercise(lable: "V-Ups", image: .vUps),
+        Exercise(lable: "Dragon Flag", image: .dragonFlag),
+        Exercise(lable: "L-Sit (using parallel bars or ground)", image: .lSitUsingParallelBarsOrGround)
         
     ]
     
     var shoulders: [Exercise] = [
-        Exercise(lable: "Overhead Press (Barbell or Dumbbell)", image: .manwork),
-        Exercise(lable: "Lateral Raise", image: .manwork),
-        Exercise(lable: "Front Raise", image: .manwork),
-        Exercise(lable: "Rear Delt Fly (Reverse Fly)", image: .bxBulb),
-        Exercise(lable: "Arnold Press", image: .bxBulb),
-        Exercise(lable: "Upright Row", image: .bxBulb),
-        Exercise(lable: "Face Pull", image: .manwork),
-        Exercise(lable: "Dumbbell Shrugs", image: .bxBulb),
-        Exercise(lable: "Push Press", image: .bxBulb),
-        Exercise(lable: "Cable Lateral Raise", image: .bxBulb)
+        Exercise(lable: "Overhead Press (Barbell or Dumbbell)", image: .overheadPressBarbellOrDumbbell),
+        Exercise(lable: "Lateral Raise", image: .lateralRaise),
+        Exercise(lable: "Front Raise", image: .frontRaise),
+        Exercise(lable: "Rear Delt Fly (Reverse Fly)", image: .rearDeltFlyReverseFly),
+        Exercise(lable: "Arnold Press", image: .arnoldPress),
+        Exercise(lable: "Upright Row", image: .uprightRow),
+        Exercise(lable: "Face Pull", image: .facePull),
+        Exercise(lable: "Dumbbell Shrugs", image: .dumbbellShrugs),
+        Exercise(lable: "Push Press", image: .pushPress),
+        Exercise(lable: "Cable Lateral Raise", image: .cableLateralRaise)
     ]
 
     
