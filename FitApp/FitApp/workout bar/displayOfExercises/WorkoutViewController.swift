@@ -75,11 +75,14 @@ class WorkoutViewController: UIViewController, passDataBack, passData{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "add", let destinationVC = segue.destination as? ExersiceViewController {
-            destinationVC.delegate = self // Set WorkoutViewController as the delegate of ExersiceViewController
+            destinationVC.delegate = self// Set WorkoutViewController as the delegate of ExersiceViewController
+            
         }
         
         if segue.identifier == "stat", let dest = segue.destination as? RepsViewController {
             dest.delegate = self
+            dest.dataPassReps = String((workouts[curentDate!]?.exercises[selectedSec!].sets[rowNmber!].reps ?? 0))
+            dest.dataPassWeight = String((workouts[curentDate!]?.exercises[selectedSec!].sets[rowNmber!].weight ?? 0))
         }
         
     }
@@ -333,6 +336,7 @@ extension WorkoutViewController: UITableViewDelegate {
         rowNmber = indexPath.row
         print(selectedSec as Any, rowNmber as Any)
         performSegue(withIdentifier: "stat", sender: nil)
+        displayTable.deselectRow(at: indexPath, animated: true)
         
     }
     

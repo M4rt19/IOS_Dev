@@ -483,6 +483,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68R-hj-TTu">
+                                <rect key="frame" x="0.0" y="445" width="414" height="368"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <backgroundConfiguration key="background" image="ETA-Homepage-logoss" imageContentMode="scaleAspectFit"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="Programs:" destination="hJ0-rL-6W7" eventType="touchUpInside" id="p8s-1N-LVc"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArK-4n-2AV">
                                 <rect key="frame" x="0.0" y="92" width="414" height="353"/>
                                 <constraints>
@@ -490,17 +501,11 @@
                                     <constraint firstAttribute="width" constant="414" id="yPC-Nw-8bf"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <backgroundConfiguration key="background" image="channels4_profile"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="Gifs:" destination="hJ0-rL-6W7" eventType="touchUpInside" id="8iw-zW-1ft"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68R-hj-TTu">
-                                <rect key="frame" x="0.0" y="445" width="414" height="368"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                <connections>
-                                    <action selector="Programs:" destination="hJ0-rL-6W7" eventType="touchUpInside" id="p8s-1N-LVc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1012,12 +1017,14 @@
     </scenes>
     <resources>
         <image name="1-76" width="1738" height="1189"/>
+        <image name="ETA-Homepage-logoss" width="1000" height="500"/>
         <image name="abs" width="355.5" height="46"/>
         <image name="back" width="390.5" height="51.5"/>
         <image name="bx-book-reader" width="24" height="24"/>
         <image name="bx-bulb" width="24" height="24"/>
         <image name="bx-dumbbell" width="24" height="24"/>
         <image name="bx-line-chart" width="24" height="24"/>
+        <image name="channels4_profile" width="900" height="900"/>
         <image name="chest" width="389.5" height="51"/>
         <image name="hands" width="389.5" height="50"/>
         <image name="legs" width="389.5" height="50.5"/>
