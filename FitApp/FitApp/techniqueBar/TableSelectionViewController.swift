@@ -21,7 +21,7 @@ class TableSelectionViewController: UIViewController{
     
     var hands: [GifExercise] = [
         GifExercise(label: "Barbell Curls", image: .barbellCurl, gif: "Barbell Curls"),
-        GifExercise(label: "Dumbbell Bicep Curls", image: .dumbbellBicepCurlsAlternatingOrBothArms, gif: "Dumbell Bicep Curls"),
+        GifExercise(label: "Dumbbell Bicep Curls", image: .dumbbellBicepCurlsAlternatingOrBothArms, gif: "Dumbbell Bicep Curls (alternating or both arms)"),
         GifExercise(label: "Hammer Curls", image: .hammerCurls, gif: "Hammer Curls"),
         GifExercise(label: "Concentration Curls", image: .concentrationCurls, gif: "Concentration Curls"),
         GifExercise(label: "Cable Bicep Curls", image: .cableBicepCurls, gif: "Cable Bicep Curls"),
@@ -48,75 +48,78 @@ class TableSelectionViewController: UIViewController{
 
     var legs: [GifExercise] = [
         // Quads
-        GifExercise(label: "Squats", image: .squatsBarbellDumbbellOrBodyweight, gif: "Hammer Curls"),
-        GifExercise(label: "Leg Press", image: .legPress, gif: "Hammer Curls"),
-        GifExercise(label: "Lunges", image: .lunges, gif: "Hammer Curls"),
-        GifExercise(label: "Bulgarian Split Squats", image: .bulgarianSplitSquatWithChair, gif: "Hammer Curls"),
-        GifExercise(label: "Step-Ups", image: .stepUpsWeightedOrUnweighted, gif: "Hammer Curls"),
-        GifExercise(label: "Hack Squats", image: .hackSquats, gif: "Hammer Curls"),
+        GifExercise(label: "Squats", image: .squatsBarbellDumbbellOrBodyweight, gif: "Squats (barbell, dumbbell, or bodyweight)"),
+        GifExercise(label: "Leg Press", image: .legPress, gif: "Leg Press"),
+        GifExercise(label: "Lunges", image: .lunges, gif: "Lunges (walking or stationary)"),
+        GifExercise(label: "Bulgarian Split Squats", image: .bulgarianSplitSquatWithChair, gif: "Bulgarian Split Squats"),
+        GifExercise(label: "Step-Ups", image: .stepUpsWeightedOrUnweighted, gif: "Step-Ups (weighted or unweighted)"),
+        GifExercise(label: "Hack Squats", image: .hackSquats, gif: "Hack Squats"),
         
         // Hamstrings
-        GifExercise(label: "Romanian Deadlifts", image: .dumbbellRomanianDeadlift, gif: "Hammer Curls"),
-        GifExercise(label: "Good Mornings", image: .goodMornings, gif: "Hammer Curls"),
-        GifExercise(label: "Leg Curls", image: .leverLyingLegCurl, gif: "Hammer Curls"),
-        GifExercise(label: "Glute-Ham Raises", image: .gluteHamRaiseThighsSmall, gif: "Hammer Curls"),
-        GifExercise(label: "Sumo Deadlifts", image: .kettlebellSumoDeadlift, gif: "Hammer Curls"),
+        GifExercise(label: "Romanian Deadlifts", image: .dumbbellRomanianDeadlift, gif: "Romanian Deadlifts"),
+        GifExercise(label: "Good Mornings", image: .goodMornings, gif: "Good Mornings"),
+        GifExercise(label: "Leg Curls", image: .leverLyingLegCurl, gif: "Leg Curls (seated or lying)"),
+        GifExercise(label: "Glute-Ham Raises", image: .gluteHamRaiseThighsSmall, gif: "Glute-Ham Raises"),
+        GifExercise(label: "Sumo Deadlifts", image: .kettlebellSumoDeadlift, gif: "Sumo Deadlifts"),
         
         // Calves
-        GifExercise(label: "Standing Calf Raises", image: .bodyweightStandingCalfRaise, gif: "Hammer Curls"),
-        GifExercise(label: "Seated Calf Raises", image: .dumbbellSeatedCalfRaise, gif: "Hammer Curls"),
-        GifExercise(label: "Farmer’s Walk on Toes", image: .farmerSWalkOnToes, gif: "Hammer Curls"),
-        GifExercise(label: "Donkey Calf Raises", image: .donkeyCalfRaiseGeraet, gif: "Hammer Curls"),
+        GifExercise(label: "Standing Calf Raises", image: .bodyweightStandingCalfRaise, gif: "Standing Calf Raises (bodyweight or weighted)"),
+        GifExercise(label: "Seated Calf Raises", image: .dumbbellSeatedCalfRaise, gif: "Seated Calf Raises"),
+        GifExercise(label: "Farmer’s Walk on Toes", image: .farmerSWalkOnToes, gif: "Farmer’s Walk (dumbbells, kettlebells, or trap bar)"),
+        GifExercise(label: "Donkey Calf Raises", image: .donkeyCalfRaiseGeraet, gif: "Donkey Calf Raises"),
         
         // Glutes
-        GifExercise(label: "Hip Thrusts", image: .dumbbellHipThrust, gif: "Hammer Curls")
+        GifExercise(label: "Hip Thrusts", image: .dumbbellHipThrust, gif: "Hip Thrusts (barbell or bodyweight)"),
+        GifExercise(label: "Glute Bridges", image: .gluteBridges, gif: "Glute Bridges"),
+        GifExercise(label: "Cable Kickbacks", image: .cableKickbacks, gif: "Cable Kickbacks"),
+        GifExercise(label: "Sumo Squats", image: .sumoSquat, gif: "Sumo Squats")
     ]
 
     var chest: [GifExercise] = [
         GifExercise(label: "Flat Bench Press", image: .flatbencPress, gif: "Flat Bench Press (barbell or dumbbell)"),
-        GifExercise(label: "Incline Bench Press", image: .inclineBenchPressBarbellOrDumbbell, gif: "Hammer Curls"),
-        GifExercise(label: "Decline Bench Press", image: .declineBenchPress, gif: "Hammer Curls"),
-        GifExercise(label: "Push-Ups", image: .pushUpsRegularWideGripDiamondOrWeighted, gif: "Hammer Curls"),
-        GifExercise(label: "Chest Flys", image: .cableSeatedChestFly, gif: "Hammer Curls"),
-        GifExercise(label: "Pec Deck Machine", image: .pecDeckMachine, gif: "Hammer Curls"),
-        GifExercise(label: "Dips for Chest", image: .dipsForChestLeanForwardForChestEmphasis, gif: "Hammer Curls"),
-        GifExercise(label: "Cable Crossovers", image: .cableCrossover, gif: "Hammer Curls")
+        GifExercise(label: "Incline Bench Press", image: .inclineBenchPressBarbellOrDumbbell, gif: "Incline Bench Press (barbell or dumbbell)"),
+        GifExercise(label: "Decline Bench Press", image: .declineBenchPress, gif: "Decline Bench Press"),
+        GifExercise(label: "Push-Ups", image: .pushUpsRegularWideGripDiamondOrWeighted, gif: "Push-Ups (regular, wide grip, diamond, or weighted)"),
+        GifExercise(label: "Chest Flys", image: .cableSeatedChestFly, gif: "Chest Flys (dumbbells or cable machine)"),
+        GifExercise(label: "Pec Deck Machine", image: .pecDeckMachine, gif: "Pec Deck Machine"),
+        GifExercise(label: "Dips for Chest", image: .dipsForChestLeanForwardForChestEmphasis, gif: "Dips for Chest (lean forward for chest emphasis)"),
+        GifExercise(label: "Cable Crossovers", image: .cableCrossover, gif: "Cable Crossovers")
     ]
 
     var back: [GifExercise] = [
-        GifExercise(label: "Pull-Ups/Chin-Ups", image: .deadHangsHangingFromAPullUpBar, gif: "Hammer Curls"),
-        GifExercise(label: "Barbell Deadlifts", image: .barbellDeadlifts, gif: "Hammer Curls"),
-        GifExercise(label: "Barbell Rows", image: .barbellRowsUnderhandOrOverhandGrip, gif: "Hammer Curls"),
-        GifExercise(label: "T-Bar Rows", image: .tBarRows, gif: "Hammer Curls"),
-        GifExercise(label: "Lat Pulldowns", image: .latPulldownsWideGripOrCloseGrip, gif: "Hammer Curls"),
-        GifExercise(label: "Dumbbell Rows", image: .dumbbellRomanianDeadlift, gif: "Hammer Curls"),
-        GifExercise(label: "Seated Cable Rows", image: .seatedCableRow, gif: "Hammer Curls"),
-        GifExercise(label: "Face Pulls", image: .facePullsForRearDeltsAndUpperBack, gif: "Hammer Curls"),
-        GifExercise(label: "Good Mornings", image: .goodMornings, gif: "Hammer Curls"),
-        GifExercise(label: "Hyperextensions", image: .hyperextension, gif: "Hammer Curls")
+        GifExercise(label: "Pull-Ups/Chin-Ups", image: .deadHangsHangingFromAPullUpBar, gif: "Pull-Ups/Chin-Ups (wide grip, close grip, neutral grip)"),
+        GifExercise(label: "Barbell Deadlifts", image: .barbellDeadlifts, gif: "Barbell Deadlifts"),
+        GifExercise(label: "Barbell Rows", image: .barbellRowsUnderhandOrOverhandGrip, gif: "Barbell Rows (underhand or overhand grip)"),
+        GifExercise(label: "T-Bar Rows", image: .tBarRows, gif: "T-Bar Rows"),
+        GifExercise(label: "Lat Pulldowns", image: .latPulldownsWideGripOrCloseGrip, gif: "Lat Pulldowns (wide grip or close grip)"),
+        GifExercise(label: "Dumbbell Rows", image: .dumbbellRomanianDeadlift, gif: "Dumbbell Rows (single-arm)"),
+        GifExercise(label: "Seated Cable Rows", image: .seatedCableRow, gif: "Seated Cable Rows"),
+        GifExercise(label: "Face Pulls", image: .facePullsForRearDeltsAndUpperBack, gif: "Face Pulls (for rear delts and upper back)"),
+        GifExercise(label: "Good Mornings", image: .goodMornings, gif: "Good Mornings"),
+        GifExercise(label: "Hyperextensions", image: .hyperextension, gif: "Hyperextensions")
     ]
 
     var abs: [GifExercise] = [
-        GifExercise(label: "Plank (standard, forearm, or side)", image: .plankStandardForearmOrSide, gif: "Hammer Curls"),
-        GifExercise(label: "Dead Bug", image: .deadBug, gif: "Hammer Curls"),
-        GifExercise(label: "Ab Wheel Rollouts", image: .abWheelRollOuts, gif: "Hammer Curls"),
-        GifExercise(label: "V-Ups", image: .vUps, gif: "Hammer Curls"),
-        GifExercise(label: "Dragon Flag", image: .dragonFlag, gif: "Hammer Curls"),
-        GifExercise(label: "L-Sit (using parallel bars or ground)", image: .lSitUsingParallelBarsOrGround, gif: "Hammer Curls")
+        GifExercise(label: "Plank (standard, forearm, or side)", image: .plankStandardForearmOrSide, gif: "Plank (standard, forearm, or side)"),
+        GifExercise(label: "Dead Bug", image: .deadBug, gif: "Dead Bug"),
+        GifExercise(label: "Ab Wheel Rollouts", image: .abWheelRollOuts, gif: "Ab Wheel Rollouts"),
+        GifExercise(label: "V-Ups", image: .vUps, gif: "V-Ups"),
+        GifExercise(label: "Dragon Flag", image: .dragonFlag, gif: "Dragon Flag"),
+        GifExercise(label: "L-Sit (using parallel bars or ground)", image: .lSitUsingParallelBarsOrGround, gif: "L-Sit (using parallel bars or ground)")
         
     ]
     
     var shoulders: [GifExercise] = [
-        GifExercise(label: "Overhead Press (Barbell or Dumbbell)", image: .overheadPressBarbellOrDumbbell, gif: "Hammer Curls"),
-        GifExercise(label: "Lateral Raise", image: .lateralRaise, gif: "Hammer Curls"),
-        GifExercise(label: "Front Raise", image: .frontRaise, gif: "Hammer Curls"),
-        GifExercise(label: "Rear Delt Fly (Reverse Fly)", image: .rearDeltFlyReverseFly, gif: "Hammer Curls"),
-        GifExercise(label: "Arnold Press", image: .arnoldPress, gif: "Hammer Curls"),
-        GifExercise(label: "Upright Row", image: .uprightRow, gif: "Hammer Curls"),
-        GifExercise(label: "Face Pull", image: .facePull, gif: "Hammer Curls"),
-        GifExercise(label: "Dumbbell Shrugs", image: .dumbbellShrugs, gif: "Hammer Curls"),
-        GifExercise(label: "Push Press", image: .pushPress, gif: "Hammer Curls"),
-        GifExercise(label: "Cable Lateral Raise", image: .cableLateralRaise, gif: "Hammer Curls")
+        GifExercise(label: "Overhead Press (Barbell or Dumbbell)", image: .overheadPressBarbellOrDumbbell, gif: "Overhead Press (Barbell or Dumbbell)"),
+        GifExercise(label: "Lateral Raise", image: .lateralRaise, gif: "Lateral Raise"),
+        GifExercise(label: "Front Raise", image: .frontRaise, gif: "Front Raise"),
+        GifExercise(label: "Rear Delt Fly (Reverse Fly)", image: .rearDeltFlyReverseFly, gif: "Rear Delt Fly (Reverse Fly)"),
+        GifExercise(label: "Arnold Press", image: .arnoldPress, gif: "Arnold Press"),
+        GifExercise(label: "Upright Row", image: .uprightRow, gif: "Upright Row"),
+        GifExercise(label: "Face Pull", image: .facePull, gif: "Face Pull"),
+        GifExercise(label: "Dumbbell Shrugs", image: .dumbbellShrugs, gif: "Dumbbell Shrugs"),
+        GifExercise(label: "Push Press", image: .pushPress, gif: "Push Press"),
+        GifExercise(label: "Cable Lateral Raise", image: .cableLateralRaise, gif: "Cable Lateral Raise")
     ]
 
 
