@@ -52,6 +52,8 @@ class CalendarViewController: UIViewController {
         calendarView.locale = .current
         calendarView.fontDesign = .rounded
         calendarView.delegate = self
+        calendarView.layer.cornerRadius = 10
+        calendarView.backgroundColor = .systemYellow
         
         let dateSelection = UICalendarSelectionSingleDate(delegate: self)
         calendarView.selectionBehavior = dateSelection

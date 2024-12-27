@@ -368,6 +368,7 @@ extension WorkoutViewController: UITableViewDataSource {
         }
         
         let view = UIView()
+        view.backgroundColor = .systemYellow
     
         
         let label = UILabel()
@@ -411,6 +412,7 @@ extension WorkoutViewController: UITableViewDataSource {
         deleteButton.tag = section
 
         
+        
         return view
     }
     
@@ -430,7 +432,7 @@ extension WorkoutViewController: UITableViewDataSource {
         let exercise = currentWorkout.exercises[indexPath.section]
         let set = exercise.sets[indexPath.row]
         cell.textLabel?.text = "Reps: \(set.reps), Weight: \(set.weight) kg"
-        cell.textLabel?.textColor = .lightGray
+        cell.textLabel?.textColor = .black
         
         return cell
     }
